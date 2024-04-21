@@ -1,0 +1,28 @@
+
+
+Merhaba! Flexbox ve JavaScript ile hareketli görselleri olan bir safya yapalım dedim.
+
+Bu video'da hem flexbox'ın kısmen de olsa inceliklerini öğrenecek, hem de bazı kullanım alanlarını göreceksiniz.
+
+Bu video'da ayrıca linux terminal kullanımı, ve bazı git komutlarını göreceğiz.
+
+
+Öncelikle sayfamıza bir bakalım...
+
+Başlayalım.
+
+...
+
+
+
+touch komutu basitçe "file" oluşturmak için kullanılır.
+
+mkdir komutu "folder" oluşturmak için kullanılır.
+
+Bildiğim kadarıyla ikisine de "dosya" diyoruz Türkçe'de.
+O yüzden İngilizcelerini yazdım.
+
+clear komutu ise konsolu temizler.
+
+...
+
