@@ -1,0 +1,7 @@
+https://css-tricks.com/understanding-flex-grow-flex-shrink-and-flex-basis/
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
+
+https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+
+https://www.w3schools.com/cssref/css_selectors.php
