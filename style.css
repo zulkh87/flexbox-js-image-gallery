@@ -1,0 +1,132 @@
+html{
+    /* genişlik ve yükseklik değerlerimiz sabit olacak. */
+    box-sizing: border-box;
+    /* arkaplan rengini belirleyelim. */
+    background: #ffc600;
+    /* harflerin şekillerini belirttik. */
+    font-family: Arial, Helvetica, sans-serif;
+    /* harflerin boyunutu belirttik */
+    font-size: 20px;
+    /* harflerin kalın mı ince mi olacağını belirttik. */
+    font-weight: 200;
+}
+
+body{
+    /* sayfamızın görünen kısmında tarayıcıdan gelen dış boşlukları istemiyoruz, gerekirse biz belirtiriz. */
+    margin: 0;
+}
+
+.panels {
+    /* en az yükseklik, görünen sayfanın tamamı kadar olsun. */
+    min-height: 100vh;
+    /* taşma olursa gözükmesin */
+    overflow: hidden;
+    /* Flexbox'u aktive edelim (panels sınıflı div'in içinde!) */
+    display: flex;
+}
+
+/* panel sınıfı için genel stillendirme yazalım: */
+
+.panel {
+    background: #6B0F9C;
+    /* box-shadow'u kendiniz araştırabilirsiniz */
+    box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+    /* yazı rengi beyaz olsun. */
+    color: white;
+    /* tüm yazılar ortalansın. */
+    text-align: center;
+    /* geçişlerin nasıl olması gerektiğini tanımlayan kod */
+    transition:
+    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    background 0.2s;
+    font-size: 20px;
+    /* Görüntüyü (oranını koruyarak) div'i doldurmak için mümkün olan en küçük boyuta ölçeklendirir (yani: hem yüksekliği hem de genişliği kabı tamamen kaplar), boş alan bırakmaz. */
+    background-size: cover;
+    /* Görünen resim alanı resim markezinden itibaren alınsın. */
+    background-position: center;
+    /* hatırlarsanız flexbox'ı aktifleştirmiştik. burada tüm çocuk elementlerin genişleme ve küçülme esnasında eşit değer alması gerektiğini belirtiyoruz. */
+    flex: 1;
+    /* ana eksende elementler ortalansın */
+    justify-content: center;
+    /* karşıt eksende elementler ortalansın. */
+    align-items: center;
+    /* Şimdi burada duralım. KAPSAYICI element'e div olmasa bile display: flex verebiliriz. */
+    display: flex;
+    /* ana eksen normalde satırdır. biz sütuna çevirdik. Bununla ilgili bir kaynak paylaşacağım. */
+    flex-direction: column;
+}
+
+/* arkaplan resimlerini bu şekilde vermeyi tercih ettik. */
+
+.panel1 { background-image:url(./images/bird-flock.jpg); }
+.panel2 { background-image:url(./images/kitten.jpg); }
+.panel3 { background-image:url(./images/bluebird.jpg); }
+.panel4 { background-image:url(./images/deer.jpg); }
+.panel5 { background-image:url(./images/beautifulbird.jpg); }
+
+/* panel sınıfına sahip olan elementlerin birincil çocuklarını seç. */
+
+.panel > * {
+    margin: 0;
+    /* panel sınına ait her çocuk toplam genişliğin %100'ünü kaplasın. */
+    width: 100%;
+    /* geçişler yarım saniye içerisinde olsun. */
+    transition: transform 0.5s;
+    /* seçili elementler büyürlerse eşit büyüsünler, küçülme olmasın, kapsayıcı div'den gelen boyutlandırma kuralları geçerli olsun. Bir kaynak daha atacağım sadece bunun için. */
+    flex: 1 0 auto;
+    /* Burada kafanız karışmasın, "panel sınıfına sahip olan elementlerin birincil çocuk elementleri" derken direk çocuk olan tüm elementleri yani 3 p elementini seçiyoruz. Text editörü sizin için otomatik olarak bu düzenlemeyi yapıyor. */
+    display: flex;
+    /* ana eksen (varsayıllan olarak, aksi belirtilmediyse satır) merkeze gelsin. */
+    justify-content: center;
+    /* karşıt eksen (varsayılan olarak, aksi belirtilmediyse sütun) merkese gelsin. */
+    align-items: center;
+}
+
+/* DİKKAT */
+
+/* panel sınıfına ait tüm elementlerin çocuklarından sadece 1. çocuk olanları seç ve geçiş fonksiyonunu uygula */
+
+.panel > *:first-child {transform: translateY(-100%);}
+
+/* panel ve open-active sınıfına sahip elementlerin çocuklarından sadece 1. çocuk olan elementlere geçiş fonksiyonunu uygula */
+
+.panel.open-active > *:first-child {transform: translateY(0);}
+
+/* panel sınıfına ait tüm elementlerin çocuklarından sadece sonuncu çocuk olanları seç ve geçiş fonksiyonunu uygula */
+
+.panel > *:last-child {transform: translateY(100%);}
+
+/* panel ve open-active sınıfına sahip elementlerin çocuklarından sadece son çocuk olan elementlere geçiş fonksiyonunu uygula */
+.panel.open-active > *:last-child {transform: translateY(0);}
+
+
+/* panel sınıfından sonra gelen tüm paragrafları seç. */
+
+.panel p{
+    /* tüm harfler büyük olsun. */
+    text-transform: uppercase;
+    /* harf tasarımını değiştir */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* harflere gölge ver, araştırabilirsiniz. */
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+    /* metin boyutunu 2 katına çıkar ( 20px'den => 40px'e gibi...) */
+    font-size: 2em;
+}
+
+/* .panel sınıfına sahip olan elementin içindeki diğüer elementlere bak, oradan 2. paragrafı seç */
+
+.panel p:nth-child(2) {
+    /* metin boyutunu 4 katına çıkar. */
+        font-size: 4em;
+}
+
+
+/* bir elementte hem panel hem de open sınıfı varsa: */
+
+.panel .open {
+    /* büyürken ve küçülürken diğerlerinden 5 kat daha fazla yer kapla. */
+    flex: 5;
+    /* metin boyutuna net bir değer verdik. */
+    font-size: 40px;
+}
